@@ -1,7 +1,7 @@
 //Idea is to think of how much water will be stored over a bar
 
 // It will be between two highest bars on either side and the exact value will be minimum of the two
-class TrappingRainWater {
+public class TrappingRainWater {
     public int trap(int[] height) {
         int n = height.length;
 
