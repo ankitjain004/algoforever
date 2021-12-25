@@ -3,6 +3,7 @@
 class FlattenBTToLL {
     TreeNode prev = null;
     public void flatten(TreeNode root) {
+        //think of it as reverse post order traversal right -> left -> node
         if(root==null) return;
         flatten(root.right);
         flatten(root.left);
