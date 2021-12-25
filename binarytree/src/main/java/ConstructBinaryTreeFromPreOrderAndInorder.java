@@ -12,7 +12,7 @@ Inorder traversal follows Left -> Root -> Right, therefore if we know the positi
 Now the idea should be clear enough. We will design a recursion function: it will set the first element of preorder as the root, and then construct the entire tree. To find the left and right subtrees, it will look for the root in inorder, so that everything on the left should be the left subtree, and everything on the right should be the right subtree. Both subtrees can be constructed by making another recursion call.
 
 It is worth noting that, while we recursively construct the subtrees, we should choose the next element in preorder to initialize as the new roots. This is because the current one has already been initialized to a parent node for the subtrees.*/
-class ConstructBinaryTreeFromPreOrderAndInorder {
+public class ConstructBinaryTreeFromPreOrderAndInorder {
     static int preOrderIndex = 0;
     HashMap<Integer , Integer> inorderIndexMap = new HashMap();
     public TreeNode buildTree(int[] preorder, int[] inorder) {
