@@ -1,3 +1,5 @@
+import java.util.PriorityQueue;
+
 class MergeKSortedList {
     public ListNode mergeKLists(ListNode[] lists) {
         int n = lists.length;
@@ -42,5 +44,6 @@ class MergeKSortedList {
             dummy.next = head2;
 
         return temp.next;
+
     }
 }
