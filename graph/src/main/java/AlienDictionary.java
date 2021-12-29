@@ -1,7 +1,7 @@
 //@link{https://leetcode.com/problems/alien-dictionary/}
 import java.util.*;
 
-class AlientDictionary {
+public class AlienDictionary {
     public String alienOrder(String[] words) {
         Map<Character, List<Character>> adjList = new HashMap();
         Map<Character, Integer> counts = new HashMap();

@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class MinimumDegreeOfConnectedTrio {
+public class MinimumDegreeOfConnectedTrio {
     public int minTrioDegree(int n, int[][] edges) {
         int[] degree = new int[n+1];
         int[][] mat = new int[n+1][n+1];
