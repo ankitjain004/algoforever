@@ -38,10 +38,10 @@ class MinimumCostWithKStopsDFS {
         if (k < 0) //since 1 stop means 2 journey k stop means k+1 journey
             return Integer.MAX_VALUE;
 
-        Pair pair = new Pair(current, k);
+        Pair Pair = new Pair(current, k);
 
-        if (memo.containsKey(pair)) {
-            return memo.get(pair);
+        if (memo.containsKey(Pair)) {
+            return memo.get(Pair);
         }
         long ans = Integer.MAX_VALUE;
         for (int i = 0; i < total; i++) {
@@ -50,7 +50,7 @@ class MinimumCostWithKStopsDFS {
             }
         }
 
-        memo.put(pair, ans);
+        memo.put(Pair, ans);
         return ans;
     }
 }
