@@ -1,6 +1,6 @@
 import java.util.Collections;
 import java.util.PriorityQueue;
-//when I was writing this code , the mistake I was making is assuming that default is a max heap whereas it is a minheap with minelement at top
+//when I was writing this code , the mistake I was making is assuming that default is a max heap whereas it is a minheap with min-element at top
 public class MedianOf2RunningStreamOfInteger {
     PriorityQueue<Integer> maxPQ = new PriorityQueue<Integer>(Collections.reverseOrder()); //left
     PriorityQueue<Integer> minPQ = new PriorityQueue<Integer>(); //right

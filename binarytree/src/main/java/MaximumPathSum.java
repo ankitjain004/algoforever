@@ -25,7 +25,8 @@ public class MaximumPathSum {
 
         if (root == null) {
             return 0;
-        } else {
+        }
+        else {
             int lSum = Math.max(maxPathSumUtil(root.left), 0);
             int rSum = Math.max(maxPathSumUtil(root.right), 0);
             maxSum = Math.max(maxSum, lSum + rSum + root.val); // if this node is where the max path is and it is the turning node

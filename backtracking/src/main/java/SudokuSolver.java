@@ -13,7 +13,6 @@ class SudokuSolver {
             if (board[i][col] == value)
                 return false;
         }
-
         int rowStart = (row / 3) * 3;
         int colStart = (col / 3) * 3;
 
@@ -21,10 +20,8 @@ class SudokuSolver {
             for (int j = colStart; j <= colStart + 2; j++) {
                 if (board[i][j] == value)
                     return false;
-
             }
         }
-
         return true;
     }
 
@@ -54,7 +51,6 @@ class SudokuSolver {
                 if (solveSudokuUtil(board, i, j + 1)) {
                     return true;
                 }
-
             }
             board[i][j] = '.';
         }
