@@ -45,6 +45,7 @@ class LFUCache {
         if (vals.containsKey(key)) {
             //update the corresponding value
             vals.put(key, value);
+            //below can be simply replaced by a call to get(key)
             int count = counts.get(key);
             //remove from count
             map.get(count).remove(key);
