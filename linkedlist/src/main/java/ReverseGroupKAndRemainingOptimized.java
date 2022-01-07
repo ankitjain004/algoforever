@@ -13,21 +13,19 @@ public class ReverseGroupKAndRemainingOptimized {
             }
 
             if (count == k) {
-
                 rev_head = reverseLinkedList(head, k);
-
                 if (newHead == null)
                     newHead = rev_head;
                 if (ktail != null)
                     ktail.next = rev_head;
                 ktail = head;
                 head = ptr;
-
             }
 
         }
         if (ktail != null)
             ktail.next = head;  // ktail.next = reverseLinkedList(head, k); will also reverse the last chunk
+        //imprtant point here is you need to pass the head
         return newHead == null ? head : newHead;
     }
 
