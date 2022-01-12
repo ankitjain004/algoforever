@@ -1,60 +1,96 @@
-class SudokuSolver {
-    public void solveSudoku(char[][] board) {
-        solveSudokuUtil(board, 0, 0);
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    List<List<String>> solution = new ArrayList<>();
+
+    public List<List<String>> solveNQueens(int n) {
+
+        List<String> temp = new ArrayList<>();
+        char[][] board = new char[n][n];
+        for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) board[i][j] = '.';
+        solveNQueensUtil(board, 0, n);
+        return solution;
 
     }
 
-    public boolean isSafe(char[][] board, int row, int col, char value) {
-        for (int i = 0; i < 9; i++) {
-            if (board[row][i] == value)
-                return false;
-        }
-        for (int i = 0; i < 9; i++) {
-            if (board[i][col] == value)
-                return false;
-        }
-        int rowStart = (row / 3) * 3;
-        int colStart = (col / 3) * 3;
 
-        for (int i = rowStart; i <= rowStart + 2; i++) {
-            for (int j = colStart; j <= colStart + 2; j++) {
-                if (board[i][j] == value)
-                    return false;
+    public void solveNQueensUtil(char[][] board, int row, int n) {
+
+        if (row == n) {
+            List<String> ans = createString(board, n);
+            solution.add(ans);
+            return;
+        }
+        for (int col = 0; col < n; col++) {
+            if (isSafe(board, row, col, n)) {
+                board[row][col] = 'Q';
+                solveNQueensUtil(board, row + 1, n);
+                board[row][col] = '.';
             }
         }
-        return true;
     }
 
-    public boolean isSolved(char[][] board) {
-        for (int i = 0; i < 9; i++)
-            for (int j = 0; j < 9; j++)
-                if (board[i][j] == '.')
-                    return false;
-        return true;
-    }
+    private List<String> createString(char[][] board, int n) {
+        List<String> ans = new ArrayList<>();
 
-    public boolean solveSudokuUtil(char[][] board, int row, int col) {
-        if (row == 8 && col == 9) return true;
-        if (col == 9) {
-            row = row + 1;
-            col = 0;
-        }
-
-        int i = row;
-        int j = col;
-        if (board[i][j] != '.')
-            return solveSudokuUtil(board, i, j + 1);
-
-        for (int k = 1; k <= 9; k++) {
-            if (isSafe(board, i, j, (char) ('0' + k))) {
-                board[i][j] = (char) ('0' + k);
-                if (solveSudokuUtil(board, i, j + 1)) {
-                    return true;
-                }
+        for (int i = 0; i < n; i++) {
+            StringBuilder sb = new StringBuilder();
+            for (int j = 0; j < n; j++) {
+                sb = sb.append(board[i][j]);
             }
-            board[i][j] = '.';
+            ans.add(sb.toString());
+        }
+        return ans;
+    }
+
+    boolean isSafe(char[][] board, int row, int col, int n) {
+        for (int i = 0; i < n; i++)
+            if (board[i][col] == 'Q') return false;
+
+        for (int i = 0; i < n; i++)
+            if (board[row][i] == 'Q') return false;
+
+        // up left row -> -1 col -1
+        int tempRow = row;
+        int tempCol = col;
+        while (tempRow >= 0 && tempCol >= 0) {
+
+            if (board[tempRow][tempCol] == 'Q') return false;
+            tempRow = tempRow - 1;
+            tempCol = tempCol - 1;
         }
 
-        return false;
+        // up right row -> -1 col -1
+        tempRow = row;
+        tempCol = col;
+        while (tempRow >= 0 && tempCol < n) {
+
+            if (board[tempRow][tempCol] == 'Q') return false;
+            tempRow = tempRow - 1;
+            tempCol = tempCol + 1;
+        }
+
+        // down right row -> -1 col -1
+        tempRow = row;
+        tempCol = col;
+        while (tempRow < n && tempCol < n) {
+
+            if (board[tempRow][tempCol] == 'Q') return false;
+            tempRow = tempRow + 1;
+            tempCol = tempCol + 1;
+        }
+
+        // down left row -> -1 col -1
+        tempRow = row;
+        tempCol = col;
+        while (tempRow < n && tempCol >= 0) {
+
+            if (board[tempRow][tempCol] == 'Q') return false;
+            tempRow = tempRow + 1;
+            tempCol = tempCol - 1;
+        }
+
+        return true;
     }
 }

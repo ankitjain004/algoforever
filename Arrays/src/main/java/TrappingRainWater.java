@@ -15,7 +15,6 @@ public class TrappingRainWater {
             if (height[i] > max) {
                 max = height[i];
             }
-
             left[i] = max;
         }
 

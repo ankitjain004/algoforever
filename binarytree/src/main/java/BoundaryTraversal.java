@@ -53,10 +53,8 @@ class BoundaryTraversal {
             if (temp.left != null || temp.right != null)
                 right.add(temp.val);
             if (temp.right != null) {
-
                 temp = temp.right;
             } else if (temp.left != null) {
-
                 temp = temp.left;
             } else
                 break;
